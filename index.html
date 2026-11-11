@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>logdns · 原生、开源、自托管的工具</title>
+  <meta name="description" content="logdns 的开源项目：imyemail、Win-XinAi-De-Tools、newtofile、downmygo。原生界面、自托管、MIT 许可。">
+  <meta property="og:title" content="logdns · 原生、开源、自托管的工具">
+  <meta property="og:description" content="imyemail、Win-XinAi-De-Tools、newtofile、downmygo —— 原生界面、自托管、MIT 许可。">
+  <meta property="og:image" content="https://2sb.org/assets/favicon.svg">
+  <meta name="theme-color" content="#0e1116">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="/">
+      <img src="assets/favicon.svg" alt="" width="28" height="28">
+      <span>logdns</span>
+    </a>
+    <nav>
+      <a href="#projects" data-i18n="nav.projects">项目</a>
+      <a href="#about" data-i18n="nav.about">关于</a>
+      <a href="https://github.com/logdns" target="_blank" rel="noopener">GitHub</a>
+      <button id="lang" class="lang" type="button" aria-label="Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero wrap">
+    <p class="eyebrow" data-i18n="hero.eyebrow">开源 · 原生 · 自托管</p>
+    <h1 data-i18n="hero.title">把工具做得像系统自带的一样。</h1>
+    <p class="lede" data-i18n="hero.lede">
+      我写原生界面的软件：Go 与 MyGo 绘制窗口，不套 WebView；该自托管的自托管，该单文件的就是一个二进制。
+    </p>
+    <div class="links">
+      <a class="btn primary" href="#projects" data-i18n="hero.projects">看项目</a>
+      <a class="btn" href="https://github.com/logdns" target="_blank" rel="noopener">github.com/logdns</a>
+    </div>
+  </section>
+
+  <section id="projects" class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="projects.title">项目</h2>
+      <p data-i18n="projects.sub">四个在维护的开源项目，都是 MIT。</p>
+    </div>
+    <div id="grid" class="grid">
+      <p class="loading" data-i18n="projects.loading">正在载入…</p>
+    </div>
+  </section>
+
+  <section id="about" class="wrap about">
+    <div class="about-card">
+      <h2 data-i18n="about.title">关于</h2>
+      <p data-i18n="about.body">
+        喜欢把复杂的东西做成一个安静的窗口：下载器、邮箱、Finder 小工具、Windows 网络工具。
+        界面尽量少打扰，配置尽量能看见，能自托管就不依赖别人的服务。
+      </p>
+      <p class="muted" data-i18n="about.stack">常用：Go、MyGo、Swift、C#、Docker、Postfix / Dovecot。</p>
+      <div class="links">
+        <a class="btn" href="https://github.com/logdns" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://github.com/logdns?tab=repositories" target="_blank" rel="noopener" data-i18n="about.all">全部仓库</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© <span id="year">2026</span> logdns</span>
+    <span class="dot">·</span>
+    <a href="https://github.com/logdns" target="_blank" rel="noopener">GitHub</a>
+    <span class="dot">·</span>
+    <a href="https://github.com/logdns/downmygo" target="_blank" rel="noopener">downmygo</a>
+    <span class="dot">·</span>
+    <a href="https://github.com/logdns/imyemail" target="_blank" rel="noopener">imyemail</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

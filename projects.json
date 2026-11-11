@@ -1,0 +1,69 @@
+[
+  {
+    "name": "imyemail",
+    "tagline": "可自建的开源邮箱系统",
+    "taglineEn": "A self-hosted email platform",
+    "description": "Webmail、管理后台与标准邮件协议（SMTP、IMAP、POP3），带 AI 邮件助手、自动化规则、2FA、DKIM 与 Docker 部署。",
+    "image": "assets/shots/imyemail.svg",
+    "language": "Go",
+    "license": "MIT",
+    "version": "v1.3.27",
+    "stars": 4,
+    "tags": ["self-hosted", "email", "docker"],
+    "links": {
+      "repo": "https://github.com/logdns/imyemail",
+      "site": "https://imy.email/",
+      "download": "https://github.com/logdns/imyemail/releases/latest"
+    }
+  },
+  {
+    "name": "Win-XinAi-De-Tools",
+    "tagline": "原生 Windows 网络工具箱",
+    "taglineEn": "A native Windows network toolkit",
+    "description": "防火墙、网络配置、SMB、WSL、Hyper-V 与临时 HTTP 服务；WinUI 3 与 MyGo 两个版本，中英文、深浅色主题。",
+    "image": "assets/shots/winxinai.png",
+    "language": "C#",
+    "license": "MIT",
+    "version": "v1.12.2",
+    "stars": 1,
+    "tags": ["windows", "winui", "network"],
+    "links": {
+      "repo": "https://github.com/logdns/Win-XinAi-De-Tools",
+      "download": "https://github.com/logdns/Win-XinAi-De-Tools/releases/latest"
+    }
+  },
+  {
+    "name": "newtofile",
+    "tagline": "随处新建文件（macOS）",
+    "taglineEn": "New files anywhere, on macOS",
+    "description": "Finder 右键新建 TXT、Markdown、RTF、JSON、CSV、HTML，以及真正的 Word / Excel / PowerPoint 模板；原生 MyGo 界面加 Swift Finder 扩展。",
+    "image": "assets/shots/newtofile.png",
+    "language": "Go · Swift",
+    "license": "MIT",
+    "version": "v0.2.3",
+    "stars": 0,
+    "tags": ["macos", "finder", "mygo"],
+    "links": {
+      "repo": "https://github.com/logdns/newtofile",
+      "site": "https://www.xinai.de/",
+      "download": "https://github.com/logdns/newtofile/releases/latest"
+    }
+  },
+  {
+    "name": "downmygo",
+    "tagline": "下载，即刻启程",
+    "taglineEn": "Downloads, on the go",
+    "description": "跨平台下载管理器：原生界面、一个二进制、内置 BitTorrent、yt-dlp 与 gallery-dl、浏览器扩展、加密 DNS、自动更新。",
+    "image": "assets/shots/downmygo.png",
+    "language": "Go",
+    "license": "MIT",
+    "version": "v1.5.1",
+    "stars": 0,
+    "tags": ["download", "torrent", "cross-platform"],
+    "links": {
+      "repo": "https://github.com/logdns/downmygo",
+      "site": "https://logdns.github.io/downmygo/",
+      "download": "https://github.com/logdns/downmygo/releases/latest"
+    }
+  }
+]
