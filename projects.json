@@ -9,7 +9,11 @@
     "license": "MIT",
     "version": "v1.3.27",
     "stars": 4,
-    "tags": ["self-hosted", "email", "docker"],
+    "tags": [
+      "self-hosted",
+      "email",
+      "docker"
+    ],
     "links": {
       "repo": "https://github.com/logdns/imyemail",
       "site": "https://imy.email/",
@@ -26,7 +30,11 @@
     "license": "MIT",
     "version": "v1.12.2",
     "stars": 1,
-    "tags": ["windows", "winui", "network"],
+    "tags": [
+      "windows",
+      "winui",
+      "network"
+    ],
     "links": {
       "repo": "https://github.com/logdns/Win-XinAi-De-Tools",
       "download": "https://github.com/logdns/Win-XinAi-De-Tools/releases/latest"
@@ -42,7 +50,11 @@
     "license": "MIT",
     "version": "v0.2.3",
     "stars": 0,
-    "tags": ["macos", "finder", "mygo"],
+    "tags": [
+      "macos",
+      "finder",
+      "mygo"
+    ],
     "links": {
       "repo": "https://github.com/logdns/newtofile",
       "site": "https://www.xinai.de/",
@@ -59,10 +71,14 @@
     "license": "MIT",
     "version": "v1.5.1",
     "stars": 0,
-    "tags": ["download", "torrent", "cross-platform"],
+    "tags": [
+      "download",
+      "torrent",
+      "cross-platform"
+    ],
     "links": {
       "repo": "https://github.com/logdns/downmygo",
-      "site": "https://logdns.github.io/downmygo/",
+      "site": "https://2sb.org/downmygo/",
       "download": "https://github.com/logdns/downmygo/releases/latest"
     }
   }
