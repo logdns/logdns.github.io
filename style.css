@@ -119,10 +119,15 @@ section { padding: 44px 0; }
 .section-head h2 { margin: 0; font-size: 24px; letter-spacing: -0.02em; }
 .section-head p { margin: 0; color: var(--muted); font-size: 14px; }
 
+/* Two columns once there is room for two, one below: four projects make
+   a square, and a fifth starts a new row without leaving a gap. */
 .grid {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .loading { color: var(--muted); }
 
@@ -138,13 +143,32 @@ section { padding: 44px 0; }
 }
 .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 
+/* A screenshot is shown whole, never cropped: the box is a backdrop, and
+   the picture sits in it at its own proportions. */
 .shot {
-  aspect-ratio: 16 / 9;
-  background: color-mix(in srgb, var(--accent) 8%, var(--card));
-  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background:
+    radial-gradient(120% 100% at 50% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
+    color-mix(in srgb, var(--ink) 4%, var(--card));
   border-bottom: 1px solid var(--line);
+  overflow: hidden;
 }
-.shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shot img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  filter: drop-shadow(0 10px 22px rgba(16, 19, 26, 0.18));
+}
+@media (prefers-color-scheme: dark) {
+  .shot img { filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55)); }
+}
 
 .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .title-row { display: flex; align-items: center; gap: 10px; }
@@ -160,7 +184,15 @@ section { padding: 44px 0; }
   white-space: nowrap;
 }
 .tagline { margin: 0; font-size: 14px; color: var(--accent); font-weight: 600; }
-.desc { margin: 0; font-size: 14px; color: var(--muted); }
+.desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {
   font-size: 11px;
@@ -202,9 +234,21 @@ section { padding: 44px 0; }
 .foot a:hover { color: var(--ink); }
 .dot { opacity: 0.5; }
 
-@media (max-width: 560px) {
-  .hero { padding-top: 56px; }
-  .bar nav { gap: 14px; }
-  .bar nav a[href="#about"] { display: none; }
+@media (max-width: 760px) {
+  .wrap { padding: 0 18px; }
+  .hero { padding: 56px 18px 28px; }
+  section { padding: 32px 0; }
+  .shot { padding: 12px; }
   .about-card { padding: 24px 20px; }
 }
+
+@media (max-width: 560px) {
+  .bar nav { gap: 14px; font-size: 13px; }
+  .bar nav a[href="#about"] { display: none; }
+  .hero h1 { font-size: 30px; }
+  .body { padding: 16px 16px 18px; }
+  .title-row h3 { font-size: 16px; }
+}
+
+/* The bar is sticky, so an anchor lands below it, not under it. */
+section[id] { scroll-margin-top: 74px; }
