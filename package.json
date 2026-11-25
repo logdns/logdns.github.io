@@ -1,0 +1,22 @@
+{
+  "name": "logdns-site",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "logdns 的个人项目站：React + Arco Design，数据显示为 GitHub 上的实时状态",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/snapshot.mjs && vite build",
+    "preview": "vite preview",
+    "snapshot": "node scripts/snapshot.mjs"
+  },
+  "dependencies": {
+    "@arco-design/web-react": "^2.66.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "vite": "^8.3.8"
+  }
+}

@@ -1,10 +1,21 @@
 # logdns.github.io
 
-个人项目站：https://2sb.org/ （GitHub Pages 用户站，仓库名必须是 `logdns.github.io`）
+个人项目站：https://2sb.org/
+
+React + [Arco Design](https://arco.design/)，Vite 构建。项目卡片上的版本、星标、最近更新时间直接从 GitHub 读取，不用手改。
+
+## 本地开发
+
+```sh
+npm install
+npm run dev          # http://localhost:5173
+npm run build        # 产物在 dist/
+npm run preview      # 预览 dist/
+```
 
 ## 加一个项目
 
-只有一步：在 [`projects.json`](projects.json) 里加一条。
+只有一步：在 [`public/projects.json`](public/projects.json) 里加一条。
 
 ```json
 {
@@ -12,7 +23,7 @@
   "tagline": "一句话中文介绍",
   "taglineEn": "One line in English",
   "description": "两三句说明它解决什么问题、有什么特点。",
-  "image": "assets/shots/my-project.png",
+  "image": "/assets/shots/my-project.png",
   "language": "Go",
   "license": "MIT",
   "version": "v1.0.0",
@@ -26,53 +37,60 @@
 }
 ```
 
-- `image`：16:9 的截图或封面，放到 `assets/shots/`，建议宽 1200 以上、小于 500 KB。
-- `links.site` 和 `links.download` 可以省略，卡片上就不会出现对应按钮。
-- `version` 可以省略；`stars` 目前是手写的，不自动更新。
-- 顺序就是数组顺序，想置顶就放前面。
+- `name` 必须和 GitHub 仓库名一致，版本与星标靠它去查。
+- `image` 放 `public/assets/shots/`，建议 16:9 或 4:3、宽 1200 以上、小于 500 KB。
+- `version` / `stars` 只是没有网络时的兜底，页面上显示的是 GitHub 的实时值。
+- `links.site` 和 `links.download` 可以省略，卡片上就不出现对应按钮。
+- 数组顺序就是显示顺序，想置顶就放前面。
 
-提交后 GitHub Pages 会自动重新发布（约 30 秒）。
+## 数据从哪来
 
-## 本地预览
+| 来源 | 何时用 |
+|---|---|
+| 浏览器缓存（`localStorage`，6 小时） | 回访，不发请求 |
+| `public/state.json`（构建时写入） | 首次访问，或 API 限流时 |
+| GitHub API（`/users/logdns/repos` + 每个项目的 `/releases/latest`） | 缓存过期时刷新 |
 
-```sh
-python3 -m http.server 8091
-# 打开 http://127.0.0.1:8091/
-```
+`npm run build` 会先跑 `scripts/snapshot.mjs`，用构建机的 GitHub 令牌把当前状态写进 `public/state.json`。CI 每天 03:00 重新构建一次，所以**项目发新版后，最迟到第二天首页就会显示新版本号和「新版本」标记**；访客打开页面时也会顺带刷新一次。
 
-`projects.json` 用 `fetch` 读取，所以必须走 HTTP，直接双击 `index.html` 会载入失败。
+API 挂了或限流时，页面照常显示 `projects.json` 里的兜底值，只在顶部提示一行。
+
+## 主题与语言
+
+- 右上角切换浅色 / 深色 / 跟随系统（Arco 的 `arco-theme`），记在 localStorage。
+- 中英文切换，默认中文。
+
+## 部署
+
+`.github/workflows/deploy.yml`：推送到 `main`、每天 03:00、或手动触发 → `npm ci && npm run build` → 发布 `dist/` 到 Pages。
+
+仓库 Settings → Pages → Source 选 **GitHub Actions**。
+
+自定义域名 `2sb.org` 在仓库 Settings → Pages → Custom domain 里，`public/CNAME` 也会复制进产物。DNS 在 Cloudflare：
+
+| 类型 | 名称 | 值 |
+|---|---|---|
+| A | `@` | `185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153`、`8001::153`、`8002::153`、`8003::153` |
+| CNAME | `www` | `logdns.github.io` |
+
+先设成 DNS only，证书签好后再考虑开代理。
 
 ## 结构
 
 ```
-index.html      页面骨架（中文默认，右上角可切英文）
-style.css       样式，跟随系统深浅色
-app.js          读取 projects.json 渲染卡片，切换语言
-projects.json   项目列表 —— 加项目只改这里
-assets/
-  favicon.svg   站点图标
-  shots/        每个项目的封面图
-CNAME           自定义域名 2sb.org
+index.html          Vite 入口
+src/
+  main.jsx          React 挂载，引入 Arco 样式
+  App.jsx           页面：导航、hero、项目、关于、页脚
+  github.js         实时状态：缓存 → state.json → API
+  i18n.js           中英文文案与相对时间
+  styles.css        版式与截图框（Arco 组件之上的少量样式）
+public/
+  projects.json     项目列表 —— 加项目只改这里
+  state.json        构建时写入的版本与更新时间
+  assets/           图标与项目截图
+  404.html          404 页
+  CNAME             自定义域名
+scripts/snapshot.mjs 构建时抓取 GitHub 状态
 ```
-
-## 域名
-
-`CNAME` 文件写着 `2sb.org`，仓库 Settings → Pages → Custom domain 也填了同一个。
-
-DNS 在 Cloudflare，需要这些记录（**先设为 DNS only，不要开橙色云朵**，等 GitHub 签好证书再考虑代理）：
-
-| 类型 | 名称 | 值 |
-|---|---|---|
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| AAAA | `@` | `2606:50c0:8000::153` |
-| AAAA | `@` | `2606:50c0:8001::153` |
-| AAAA | `@` | `2606:50c0:8002::153` |
-| AAAA | `@` | `2606:50c0:8003::153` |
-| CNAME | `www` | `logdns.github.io` |
-
-生效后，仓库 Settings → Pages 勾上 **Enforce HTTPS**。
-
-项目子站会跟着走：`2sb.org/downmygo/`、`2sb.org/<其它项目>/`，各自仓库里的 CNAME 不需要改。

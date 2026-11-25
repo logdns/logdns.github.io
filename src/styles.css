@@ -1,0 +1,293 @@
+/* Arco carries the components; this file is the page's own rhythm: the
+   width, the hero, the screenshot frame, and the small print. */
+
+:root {
+  --page-max: 1120px;
+  --brand-a: #3b6ef6;
+  --brand-b: #0fa79a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 520px at 10% -10%, rgba(59, 110, 246, 0.16), transparent 70%),
+    radial-gradient(820px 480px at 94% 2%, rgba(15, 167, 154, 0.14), transparent 70%),
+    var(--color-bg-1, #f7f8fc);
+}
+
+body[arco-theme="dark"] {
+  background:
+    radial-gradient(900px 520px at 10% -10%, rgba(59, 110, 246, 0.20), transparent 70%),
+    radial-gradient(820px 480px at 94% 2%, rgba(15, 167, 154, 0.16), transparent 70%),
+    #0b0e13;
+}
+
+.page {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.wrap {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- the bar --- */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 60px;
+  padding: 0;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  background: color-mix(in srgb, var(--color-bg-1) 80%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--color-border-2);
+}
+
+.bar-in {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text-1);
+}
+
+.brand img {
+  border-radius: 8px;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 22px;
+  font-size: 14px;
+}
+
+.nav a {
+  color: var(--color-text-3);
+}
+
+.nav a:hover {
+  color: var(--color-text-1);
+}
+
+/* --- hero --- */
+
+.hero {
+  padding: 88px 24px 44px;
+  max-width: 880px;
+}
+
+.eyebrow {
+  border-radius: 999px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: clamp(32px, 5.4vw, 54px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.035em;
+  margin: 0 0 18px !important;
+}
+
+.lede {
+  font-size: clamp(15px, 2vw, 18px) !important;
+  color: var(--color-text-3) !important;
+  max-width: 720px;
+  margin-bottom: 28px !important;
+}
+
+/* --- sections --- */
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.refresh {
+  margin-left: auto;
+  color: var(--color-text-3) !important;
+}
+
+.refresh .arco-btn-loading-icon {
+  margin: 0;
+}
+
+.notice {
+  margin-bottom: 14px;
+}
+
+.center {
+  display: grid;
+  place-items: center;
+  padding: 60px 0;
+}
+
+/* --- a project --- */
+
+.project {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.project .arco-card-cover {
+  flex: none;
+}
+
+.project .arco-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shot {
+  display: grid !important;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  padding: 18px;
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(59, 110, 246, 0.10), transparent 70%),
+    var(--color-fill-2);
+  border-bottom: 1px solid var(--color-border-2);
+  overflow: hidden;
+}
+
+.shot img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  filter: drop-shadow(0 12px 24px rgba(16, 19, 26, 0.16));
+  transition: transform 0.25s ease;
+}
+
+.project:hover .shot img {
+  transform: scale(1.015);
+}
+
+body[arco-theme="dark"] .shot img {
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55));
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.title-row .name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-1);
+  letter-spacing: -0.01em;
+}
+
+.title-row .arco-space {
+  margin-left: auto;
+}
+
+.tagline {
+  color: var(--color-primary) !important;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.desc {
+  margin: 0 !important;
+  color: var(--color-text-3) !important;
+  font-size: 13.5px;
+  line-height: 1.65 !important;
+}
+
+.tags {
+  margin-top: 2px;
+}
+
+.actions {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* --- about --- */
+
+.about {
+  border-radius: 16px;
+  padding: 8px 8px 4px;
+}
+
+/* --- foot --- */
+
+.foot {
+  margin-top: 40px;
+  padding: 24px 0 44px;
+  border-top: 1px solid var(--color-border-2);
+  background: transparent;
+}
+
+.foot-in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.foot a {
+  color: var(--color-text-3);
+  font-size: 13px;
+}
+
+.foot a:hover {
+  color: var(--color-text-1);
+}
+
+@media (max-width: 760px) {
+  .wrap,
+  .hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .hero {
+    padding-top: 56px;
+    padding-bottom: 28px;
+  }
+  .nav {
+    gap: 14px;
+    font-size: 13px;
+  }
+  .nav a[href="#about"] {
+    display: none;
+  }
+  .shot {
+    padding: 12px;
+  }
+
+}
