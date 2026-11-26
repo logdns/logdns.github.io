@@ -227,10 +227,15 @@ export default function App() {
             <Empty description={t.failed} />
           ) : (
             <Row gutter={[20, 20]}>
-              {projects.map((project) => {
+              {projects.map((project, index) => {
                 const isNew = project.publishedAt && Date.now() - new Date(project.publishedAt).getTime() < WEEK;
                 return (
-                  <Col key={project.name} xs={24} sm={24} md={12}>
+                  <Col
+                    key={project.name}
+                    xs={24}
+                    sm={24}
+                    md={projects.length % 2 === 1 && index === projects.length - 1 ? { span: 12, offset: 6 } : 12}
+                  >
                     <Card
                       className="project"
                       hoverable
