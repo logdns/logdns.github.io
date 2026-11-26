@@ -1,5 +1,26 @@
 [
   {
+    "name": "Velarouter",
+    "tagline": "局域网优先的加密远程桌面",
+    "taglineEn": "A LAN-first encrypted remote desktop",
+    "description": "两台电脑装同一个客户端，用联机码和密码连接，无需注册账号；同一局域网直连不走服务器，跨网默认点对点加密，画面与操作都不经过中继。",
+    "image": "/assets/shots/velarouter.png",
+    "language": "Rust",
+    "license": "Apache-2.0",
+    "version": "v0.1.1",
+    "stars": 0,
+    "tags": [
+      "remote-desktop",
+      "rust",
+      "p2p"
+    ],
+    "links": {
+      "repo": "https://github.com/logdns/Velarouter",
+      "site": "https://2sb.org/Velarouter/",
+      "download": "https://github.com/logdns/Velarouter/releases/latest"
+    }
+  },
+  {
     "name": "imyemail",
     "tagline": "可自建的开源邮箱系统",
     "taglineEn": "A self-hosted email platform",
